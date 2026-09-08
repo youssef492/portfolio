@@ -469,8 +469,70 @@
     opacity: .5;
   }
 
+  .screens-strip.large { grid-template-columns: repeat(6, 1fr); gap: 10px; }
+
+  @media (max-width: 900px) {
+    .screens-strip.large { grid-template-columns: repeat(4, 1fr); }
+  }
   @media (max-width: 720px) {
     .screens-strip { grid-template-columns: repeat(2, 1fr); }
+    .screens-strip.large { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .video-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .video-frame {
+    aspect-ratio: 9 / 16;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--bg);
+    overflow: hidden;
+    position: relative;
+  }
+  .video-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-frame::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 30%; height: 5px;
+    background: var(--line);
+    border-radius: 4px;
+    z-index: 2;
+    opacity: .5;
+  }
+  .video-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--paper-dim);
+    font-family: var(--mono);
+    text-align: center;
+    padding: 10px;
+  }
+  .video-placeholder .ph-icon {
+    width: 34px; height: 34px;
+    border: 1px dashed var(--line);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    opacity: .6;
+  }
+  .video-placeholder span { font-size: .62rem; letter-spacing: .04em; opacity: .7; }
+
+  @media (max-width: 560px) {
+    .video-strip { grid-template-columns: 1fr 1fr; gap: 10px; }
   }
 
   /* ── CONTACT ── */
@@ -686,12 +748,31 @@
 
       <div>
         <p class="shot-label">Screenshots<span class="rule"></span></p>
-        <div class="screens-strip">
-          <!-- TODO: replace each placeholder with <img src="..." alt="Burando screenshot"> -->
-          <div class="screen-frame"><div class="screen-placeholder"><div class="ph-icon">＋</div><span>Add screenshot</span></div></div>
-          <div class="screen-frame"><div class="screen-placeholder"><div class="ph-icon">＋</div><span>Add screenshot</span></div></div>
-          <div class="screen-frame"><div class="screen-placeholder"><div class="ph-icon">＋</div><span>Add screenshot</span></div></div>
-          <div class="screen-frame"><div class="screen-placeholder"><div class="ph-icon">＋</div><span>Add screenshot</span></div></div>
+        <div class="screens-strip large">
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-1.jpg" alt="Burando screenshot 1"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-2.jpg" alt="Burando screenshot 2"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-3.jpg" alt="Burando screenshot 3"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-4.jpg" alt="Burando screenshot 4"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-5.jpg" alt="Burando screenshot 5"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-6.jpg" alt="Burando screenshot 6"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-7.jpg" alt="Burando screenshot 7"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-8.jpg" alt="Burando screenshot 8"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-9.jpg" alt="Burando screenshot 9"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-10.jpg" alt="Burando screenshot 10"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-11.jpg" alt="Burando screenshot 11"></div>
+          <div class="screen-frame"><img src="screenshots/screenshots/burando-12.jpg" alt="Burando screenshot 12"></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="shot-label">Demo Videos<span class="rule"></span></p>
+        <div class="video-strip">
+          <div class="video-frame">
+            <video src="videos/burando-demo-1.mp4" controls playsinline></video>
+          </div>
+          <div class="video-frame">
+            <video src="videos/burando-demo-2.mp4" controls playsinline></video>
+          </div>
         </div>
       </div>
     </div>
