@@ -136,6 +136,43 @@
     color: var(--amber);
   }
 
+  .hero-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: end;
+  }
+  .hero-photo {
+    width: 180px;
+    height: 220px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    background: var(--card);
+  }
+  .hero-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--amber-dim);
+    border-radius: 4px;
+    transform: translate(8px, 8px);
+    z-index: -1;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  @media (max-width: 700px) {
+    .hero-top { grid-template-columns: 1fr; align-items: start; }
+    .hero-photo { width: 120px; height: 150px; order: -1; }
+  }
+
   .hero-sub {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -643,7 +680,13 @@
 <!-- HERO -->
 <header class="hero">
   <p class="hero-index"><span class="rule"></span>Flutter &amp; Dart Developer — Cairo, Egypt</p>
-  <h1>Building mobile<br>software that<br><em>feels considered.</em></h1>
+  <div class="hero-top">
+    <h1>Building mobile<br>software that<br><em>feels considered.</em></h1>
+    <div class="hero-photo">
+      <!-- TODO: replace src with the raw GitHub path to your photo -->
+      <img src="photo/youssef.jpg" alt="Youssef Ehab">
+    </div>
+  </div>
 
   <div class="hero-sub">
     <p class="hero-desc">
